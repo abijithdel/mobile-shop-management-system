@@ -1,0 +1,28 @@
+{
+  "name": "m-s-m",
+  "version": "0.1",
+  "description": "mobile shop management system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abijithdel/mobile-shop-management-system.git"
+  },
+  "author": "https://github.com/abijithdel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abijithdel/mobile-shop-management-system/issues"
+  },
+  "homepage": "https://github.com/abijithdel/mobile-shop-management-system#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
