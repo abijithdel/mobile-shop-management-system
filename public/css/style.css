@@ -67,6 +67,10 @@ body{
     text-decoration: none;
 }
 
+.header-rap .icons .red{
+    color: red;
+}
+
 /* HOME PAGE */
 
 .home-page{

@@ -2,8 +2,14 @@
     <div class="title">
         <h1>Shop</h1>
     </div>
-    <div class="icons">
-        <a href="">Sign in</a>
-        <a href="">Sign up</a>
-    </div>
+    <% if(!user) { %>
+        <div class="icons">
+            <a href="/auth/signin">Sign in</a>
+            <a href="/auth/signup">Sign up</a>
+        </div>
+    <%} else {%>
+            <div class="icons">
+                <a class="red" href="/auth/logout">Logout</a>
+            </div>
+    <% } %>
 </header>
