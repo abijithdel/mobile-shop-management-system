@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/abijithdel/mobile-shop-management-system#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "express-ejs-layouts": "^2.5.1"
+    "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^8.8.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

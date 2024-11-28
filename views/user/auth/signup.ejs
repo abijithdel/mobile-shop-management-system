@@ -1,0 +1,22 @@
+<title>Sign up</title>
+<section class="signup-page">
+    <div class="rap">
+        <% if(errormes) { %>
+        <div class="message">
+            <p class="error-message"><%= errormes %></p>
+        </div>
+        <% } %>
+        <h1>Sign up</h1>
+        <form action="/auth/signup" method="post">
+            <input type="email" name="email" placeholder="Email..@" required>
+            <br>
+            <input type="password" name="password" placeholder="Password" required>
+            <br>
+            <input type="password" name="cpassword" placeholder="Confirm Password" required>
+            <br>
+            <a href="/auth/signin">i have a account</a>
+            <br>
+            <button>Sign up</button>
+        </form>
+    </div>
+</section>

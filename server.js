@@ -2,6 +2,7 @@ const express = require('express')
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path')
 const app = express()
+require('./config/mongoose')
 
 // EJS
 app.set('view engine', 'ejs');
@@ -12,6 +13,7 @@ app.use(express.static("public"));
 
 // Routers
 const mainRouter = require('./routers/main')
+const authRouter = require('./routers/auth')
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +21,15 @@ app.use(express.json());
 
 // Router Middleware's
 app.use('/', mainRouter)
+app.use('/auth', authRouter)
+
+
+// 404 page
+
+app.get('*', (req,res) => {
+    const URL = req.url
+    res.status(404).render('error',{ status:404,URL })
+})
 
 const PORT = 3000 || process.env.PORT
 app.listen(PORT,()=>console.log(`Server Running.! Port: ${PORT}`))
