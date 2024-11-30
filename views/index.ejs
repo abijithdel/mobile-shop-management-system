@@ -1,7 +1,48 @@
+<title>Store</title>
 <section class="home-page">
-   <div class="rap">
-        <div class="create-shop">
-            <a href="">Create New Store</a>
-        </div>
-   </div>
+  <div id="message">
+    <!-- Error Message -->
+  </div>
+  <div class="rap">
+    <% if(store) { %> <% for(let key in store) { %>
+    <div onclick="getStore('<%= store[key]._id %>')" class="stores">
+      <img src="/img/store-icon.png" alt="" />
+      <p><%= store[key].name %>..</p>
+    </div>
+    <% } %> <% } %> <% if(user.admin) { %>
+    <div onclick="addNewStore()" class="create-shop">
+      <img src="/img/plus-icon.png" alt="plus" />
+      <p>Create New Store</p>
+    </div>
+    <% } %>
+  </div>
 </section>
+<script>
+  const messageBox = document.getElementById("message");
+  function addNewStore() {
+    window.location.href = "/new-store";
+  }
+
+  function getStore(store_id) {
+    fetch(`/api/ender-store/${store_id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if(data.status){
+            window.location.href = `/store/${store_id}`
+        }else{
+            const item = document.createElement('p');
+            item.className = 'error-message';
+            item.textContent = 'Permission error'
+            messageBox.appendChild(item)
+        }
+      })
+      .catch((err) => console.error("Failed to fetch store:", err));
+  }
+</script>
+
+

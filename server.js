@@ -15,6 +15,7 @@ app.use(express.static("public"));
 // Routers
 const mainRouter = require("./routers/main");
 const authRouter = require("./routers/auth");
+const apiRouter = require("./routers/api");
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -33,12 +34,13 @@ app.use(
 // Router Middleware's
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
+app.use("/api", apiRouter);
 
 // 404 page
 
 app.get("*", (req, res) => {
   const URL = req.url;
-  res.status(404).render("error", { status: 404, URL });
+  res.status(404).render("error", { status: 404, URL, user:req.session.user });
 });
 
 const PORT = 3000 || process.env.PORT;
