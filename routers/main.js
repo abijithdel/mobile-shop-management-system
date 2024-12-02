@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Home } = require("../utiitsl/main");
+const { Home, CreateRole } = require("../utiitsl/main");
 const { newStore, createNewStore } = require("../utiitsl/admin");
 
 function islogin(req, res, nest) {
@@ -43,8 +43,33 @@ router.post('/new-store', (req,res) => {
   .catch(err => console.log(err))
 })
 
-router.get('/store/:id', islogin, (req,res) => {
-  res.render('user/main/store',{user:req.session.user})
+router.get('/store/:store_id', islogin, (req,res) => {
+  const { store_id } = req.params
+  res.render('user/main/store',{user:req.session.user, store_id})
+})
+
+router.get('/roles/:store_id' , islogin, (req,res) => {
+  const { store_id } = req.params
+  res.render('user/main/roles', {user:req.session.user, store_id})
+})
+
+router.get('/create-role/:store_id' , islogin, (req,res) => {
+  const { store_id } = req.params
+  res.render('user/main/create-role', {user:req.session.user, store_id})
+})
+
+router.post('/create-role/:store_id' , islogin, (req,res) => {
+  const body = req.body;
+  const { store_id } = req.params
+  const user = req.session.user
+  CreateRole(body, store_id, user)
+  .then(response => {
+    res.redirect(`/roles/${store_id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
 })
 
 module.exports = router;

@@ -48,6 +48,8 @@ body{
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
+    box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.26);
+
 }
 
 .header-rap .title{
@@ -252,4 +254,149 @@ body{
     border-radius: 8px;
     color: var(--btn-color);
     cursor: pointer;
+}
+
+/* store-page */
+
+.store-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.store-page .rap{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.store-page .rap .menu{
+    width: 230px;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.store-page .rap .menu a{
+    color: white;
+    margin-top: 15px;
+    text-decoration: none;
+    font-weight: 400;
+    background-color: var(--bg-color1);
+    padding: 10px;
+    width: 90%;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.store-page .rap .menu a:hover{
+    background-color: var(--bg-color2);
+}
+
+.store-page .rap .main{
+    width: 90%;
+    height: 90vh;
+}
+
+.store-page .rap .main .title{
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* role-page */
+
+.role-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.role-page .rap{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.role-page .rap .title-btn{
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-top: 20px;
+}
+
+.role-page .rap .title-btn .btn{
+    width: 15%;
+}
+
+.role-page .rap .title-btn .btn a{
+    margin-left: 10px;
+    color: var(--btn-color);
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid var(--btn-color);
+    border-radius: 8px;
+
+}
+
+.role-page .rap .title-btn .title{
+    width: 85%;
+    text-align: center;
+}
+
+/* create-role-page */
+
+.create-role-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.create-role-page .rap{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-role-page .rap .title{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.create-role-page .rap .box{
+    margin-bottom: 10px;
+}
+
+.create-role-page .rap .box label{
+    margin-right: 10px;
+}
+
+.create-role-page .rap form{
+    padding: 20px;
+    background-color: var(--bg-color1);
+    border-radius: 10px;
+}
+
+.create-role-page .rap form button{
+    height: 30px;
+    width: 90px;
+    color: var(--btn-color);
+    background-color: transparent;
+    border: 1px solid var(--btn-color);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.create-role-page .rap form .name{
+    margin-bottom: 10px;
+}
+
+.create-role-page .rap form .name input{
+    height: 35px;
+    border: none;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 8px;
 }

@@ -1,0 +1,50 @@
+<title>Create New Role</title>
+<style>
+
+</style>
+<section class="create-role-page">
+  <div class="rap">
+    <h1 class="title">Create New Role</h1>
+    <form action="/create-role/<%= store_id %>" method="post">
+
+      <div class="name">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" placeholder="Enter Role Name.!" required>
+      </div>
+      <div class="box">
+        <label for="add_product">Add Product</label>
+        <input type="checkbox" name="add_product">
+      </div>
+
+      <div class="box">
+        <label for="add_sale">Add Sale</label>
+        <input type="checkbox" name="add_sale">
+      </div>
+
+      <div class="box">
+        <label for="all_products">All Products</label>
+        <input type="checkbox" name="all_products">
+      </div>
+
+      <div class="box">
+        <label for="all_sales">All Sales</label>
+        <input type="checkbox" name="all_sales">
+      </div>
+
+      <div class="box">
+        <label for="manage_role">Manage Role</label>
+        <input type="checkbox" name="manage_role">
+      </div>
+
+      <div class="box">
+        <label for="manage_user">Manage User</label>
+        <input type="checkbox" name="manage_user">
+      </div>
+
+      <div>
+        <button>Create Role</button>
+      </div>
+    </form>
+  </div>
+</section>
