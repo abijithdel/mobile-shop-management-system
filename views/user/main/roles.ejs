@@ -1,16 +1,33 @@
 <title>Roles</title>
 <section class="role-page">
-    <div class="rap">
-        <div class="title-btn">
-            <div class="btn">
-                <a href="/create-role/<%= store_id %>">Create New Role</a>
-            </div>
-            <div class="title">
-                <h1>Roles</h1>
-            </div>
-        </div>
-        <div class="table">
-                
-        </div>
+  <div class="rap">
+    <div class="title-btn">
+      <div class="btn">
+        <a href="/create-role/<%= store_id %>">Create New Role</a>
+      </div>
+      <div class="title">
+        <h1>Roles</h1>
+      </div>
     </div>
+    <div class="table">
+      <table>
+        <tr>
+          <th>Role Name</th>
+          <th>Total Members</th>
+          <th>Options</th>
+        </tr>
+        <% for(let key in rolse) { %>
+        <tr>
+          <td><%= rolse[key].name %></td>
+          <td><%= rolse[key].count %> <a href=""><i class="bi bi-info-circle-fill"></i></a></td>
+          <td>
+            <a title="give role a new user" href="/give-role/<%= store_id %>/<%= rolse[key]._id %>"><i class="bi bi-person-fill-add"></i></a> - 
+            <!-- <a title="edit role" href=""><i class="bi bi-pencil-square"></i></a> -  -->
+            <a title="delete role" href=""><i class="bi bi-trash3"></i></a>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+  </div>
 </section>

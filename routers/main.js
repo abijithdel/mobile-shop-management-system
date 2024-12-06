@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Home, CreateRole } = require("../utiitsl/main");
+const { Home, CreateRole, RolePage, AddRole } = require("../utiitsl/main");
 const { newStore, createNewStore } = require("../utiitsl/admin");
 
 function islogin(req, res, nest) {
@@ -50,7 +50,11 @@ router.get('/store/:store_id', islogin, (req,res) => {
 
 router.get('/roles/:store_id' , islogin, (req,res) => {
   const { store_id } = req.params
-  res.render('user/main/roles', {user:req.session.user, store_id})
+  RolePage(store_id)
+  .then(response => {
+    res.render('user/main/roles', {user:req.session.user, store_id, rolse:response.rolse, count:response.count})
+  })
+  .catch(err => console.log(err))
 })
 
 router.get('/create-role/:store_id' , islogin, (req,res) => {
@@ -70,6 +74,15 @@ router.post('/create-role/:store_id' , islogin, (req,res) => {
     console.log(err)
     res.redirect('/')
   })
+})
+
+router.get('/give-role/:store_id/:role_id', islogin, (req,res) => {
+  const { store_id, role_id } = req.params
+  AddRole(store_id)
+  .then(response => {
+    res.render('user/main/give-role',{user:req.session.user, users:response.user, store_id, role_id})
+  })
+  .catch(err => console.log(err))
 })
 
 module.exports = router;

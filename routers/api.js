@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { enderStore } = require("../utiitsl/api");
+const { enderStore, AddRole } = require("../utiitsl/api");
 
 function islogin(req, res, nest) {
   if (req.session.login) {
@@ -23,5 +23,13 @@ router.get("/ender-store/:store_id", islogin, (req, res) => {
   })
   .catch(err => console.log(err))
 });
+
+router.post('/add-role', (req,res) => {
+  AddRole(req.body)
+  .then(response => {
+    res.json(response)
+  })
+  .catch(err => console.log(err))
+})
 
 module.exports = router;

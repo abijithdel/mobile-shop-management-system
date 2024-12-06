@@ -35,6 +35,7 @@
         if(data.status){
             window.location.href = `/store/${store_id}`
         }else{
+            messageBox.innerHTML = ''
             const item = document.createElement('p');
             item.className = 'error-message';
             item.textContent = 'Permission error'

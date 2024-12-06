@@ -1,0 +1,58 @@
+<title>User Add Role</title>
+
+<section class="add-role-page">
+    <div class="rap">
+        <h1>All Users</h1>
+        <div id="message">
+            <!-- Message -->
+        </div>
+        <% for(let key in users) { %>
+            <div class="user">
+                <p>
+                  <%= users[key].email %>
+                </p>
+                <% if(users[key].status) { %>
+                    <i  class="bi bi-plus-circle-fill" onclick="addRole(this,'<%= users[key]._id %>')"></i>
+                <% } else { %>
+                    <i  class="bi bi-plus-circle" onclick="addRole(this,'<%= users[key]._id %>')"></i>
+                <% } %>
+              </div>
+              
+        <% } %>
+    </div>
+</section>
+<script>
+    function addRole(icon,user_id) {
+        const store_id = '<%= store_id %>'
+        const role_id = '<%= role_id %>'
+        fetch('/api/add-role', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({role_id, user_id, store_id})
+        })
+        .then(res => res.json())
+        .then(data => {
+            const messageBox = document.getElementById('message')
+            messageBox.innerHTML = ''
+            const item = document.createElement('p')
+            if(data.status){
+                item.classList.add('success-message')
+                icon.classList.remove('bi-plus-circle')
+                icon.classList.add('bi-plus-circle-fill')
+            }else{
+                item.classList.add('error-message')
+                icon.classList.remove('bi-plus-circle-fill')
+                icon.classList.add('bi-plus-circle')
+            }
+            item.innerHTML = `!${data.message}`
+            messageBox.appendChild(item)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    
+</script>

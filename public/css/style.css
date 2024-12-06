@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,13 +9,14 @@
 
 :root {
     /* main BG */
-    --main-bg: #2F3C7E;  
+    --main-bg: #2F3C7E;
 
     --pastelpink: #FBEAEB;
     --white: white;
     --border-color: white;
     --btn-color: aqua;
     --danger: red;
+    --success: rgb(3, 218, 3);
 
     --bg-color1: #455397;
     --bg-color2: #5e6cb3;
@@ -23,7 +24,7 @@
 
 /* error message */
 
-.error-message{
+.error-message {
     text-align: center;
     color: white;
     padding: 10px;
@@ -34,7 +35,18 @@
     border-radius: 9px;
 }
 
-body{
+.success-message{
+    color: white;
+    background-color: rgba(6, 204, 6, 0.295);
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    text-align: center;
+}
+
+body {
     background-color: var(--main-bg);
     color: var(--white);
 }
@@ -42,7 +54,7 @@ body{
 
 /* HEAFER */
 
-.header-rap{
+.header-rap {
     width: 100vw;
     height: 10vh;
     padding-left: 20px;
@@ -52,7 +64,7 @@ body{
 
 }
 
-.header-rap .title{
+.header-rap .title {
     font-size: 28px;
     width: 50%;
 }
@@ -64,24 +76,24 @@ body{
     justify-content: end;
 }
 
-.header-rap .icons a{
+.header-rap .icons a {
     color: var(--white);
     margin-right: 15px;
     text-decoration: none;
 }
 
-.header-rap .icons .red{
+.header-rap .icons .red {
     color: red;
 }
 
 /* HOME PAGE */
 
-.home-page{
+.home-page {
     height: 80vh;
     width: 100vw;
 }
 
-.home-page .rap{
+.home-page .rap {
     width: 100%;
     height: 100%;
     display: flex;
@@ -98,15 +110,15 @@ body{
     border-radius: 8px;
 }
 
-.home-page .rap .create-shop:hover{
+.home-page .rap .create-shop:hover {
     border: 1px solid aqua;
 }
 
-.home-page .rap .create-shop img{
+.home-page .rap .create-shop img {
     height: 100px;
 }
 
-.home-page .rap .stores{
+.home-page .rap .stores {
     text-align: center;
     margin-right: 10px;
     padding: 10px;
@@ -115,22 +127,22 @@ body{
     cursor: pointer;
 }
 
-.home-page .rap .stores img{
+.home-page .rap .stores img {
     height: 100px;
 }
 
-.home-page .rap .stores:hover{
+.home-page .rap .stores:hover {
     border: 1px solid var(--btn-color);
 }
 
 /* SIGN UP PAGE */
 
-.signup-page{
+.signup-page {
     height: 80vh;
     width: 100vw;
 }
 
-.signup-page .rap{
+.signup-page .rap {
     height: 100%;
     width: 100%;
     display: flex;
@@ -139,12 +151,12 @@ body{
     flex-direction: column;
 }
 
-.signup-page .rap h1{
+.signup-page .rap h1 {
     margin-bottom: 20px;
     font-size: 30px;
 }
 
-.signup-page .rap form input{
+.signup-page .rap form input {
     height: 40px;
     width: 290px;
     margin-bottom: 10px;
@@ -154,7 +166,7 @@ body{
     border-radius: 9px;
 }
 
-.signup-page .rap form button{
+.signup-page .rap form button {
     height: 38px;
     width: 100px;
     border: 1px solid var(--btn-color);
@@ -165,18 +177,18 @@ body{
     margin-top: 10px;
 }
 
-.signup-page .rap form a{
+.signup-page .rap form a {
     color: var(--white);
 }
 
 /* SIGN IN PAGE */
 
-.signin-page{
+.signin-page {
     width: 100vw;
     height: 80vh;
 }
 
-.signin-page .rap{
+.signin-page .rap {
     width: 100%;
     height: 100%;
     display: flex;
@@ -185,22 +197,22 @@ body{
     flex-direction: column;
 }
 
-.signin-page .rap h1{
+.signin-page .rap h1 {
     margin-bottom: 20px;
     font-size: 30px;
 }
 
-.signin-page .rap form input{
+.signin-page .rap form input {
     width: 290px;
     height: 40px;
-    border:  none;
+    border: none;
     outline: none;
     border-radius: 9px;
     padding-left: 10px;
     margin-bottom: 10px;
 }
 
-.signin-page .rap form button{
+.signin-page .rap form button {
     height: 38px;
     width: 100px;
     border: 1px solid var(--btn-color);
@@ -211,18 +223,18 @@ body{
     margin-top: 10px;
 }
 
-.signin-page .rap form a{
+.signin-page .rap form a {
     color: var(--white);
 }
 
 /* new-store-page */
 
-.new-store-page{
+.new-store-page {
     height: 80vh;
     width: 100vw;
 }
 
-.new-store-page .rap{
+.new-store-page .rap {
     width: 100%;
     height: 100%;
     display: flex;
@@ -231,12 +243,12 @@ body{
     flex-direction: column;
 }
 
-.new-store-page .rap h1{
+.new-store-page .rap h1 {
     margin-bottom: 20px;
     font-size: 30px;
 }
 
-.new-store-page .rap form input{
+.new-store-page .rap form input {
     height: 40px;
     width: 250px;
     border: none;
@@ -245,7 +257,7 @@ body{
     padding-left: 10px;
 }
 
-.new-store-page .rap form button{
+.new-store-page .rap form button {
     height: 38px;
     width: 100px;
     margin-top: 10px;
@@ -258,18 +270,18 @@ body{
 
 /* store-page */
 
-.store-page{
+.store-page {
     height: 90vh;
     width: 100vw;
 }
 
-.store-page .rap{
+.store-page .rap {
     height: 100%;
     width: 100%;
     display: flex;
 }
 
-.store-page .rap .menu{
+.store-page .rap .menu {
     width: 230px;
     height: 100%;
     overflow: auto;
@@ -278,7 +290,7 @@ body{
     flex-direction: column;
 }
 
-.store-page .rap .menu a{
+.store-page .rap .menu a {
     color: white;
     margin-top: 15px;
     text-decoration: none;
@@ -290,46 +302,46 @@ body{
     border-radius: 8px;
 }
 
-.store-page .rap .menu a:hover{
+.store-page .rap .menu a:hover {
     background-color: var(--bg-color2);
 }
 
-.store-page .rap .main{
+.store-page .rap .main {
     width: 90%;
     height: 90vh;
 }
 
-.store-page .rap .main .title{
+.store-page .rap .main .title {
     text-align: center;
     margin-top: 10px;
 }
 
 /* role-page */
 
-.role-page{
+.role-page {
     height: 90vh;
     width: 100vw;
 }
 
-.role-page .rap{
+.role-page .rap {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.role-page .rap .title-btn{
+.role-page .rap .title-btn {
     width: 100%;
     height: auto;
     display: flex;
     margin-top: 20px;
 }
 
-.role-page .rap .title-btn .btn{
+.role-page .rap .title-btn .btn {
     width: 15%;
 }
 
-.role-page .rap .title-btn .btn a{
+.role-page .rap .title-btn .btn a {
     margin-left: 10px;
     color: var(--btn-color);
     text-decoration: none;
@@ -339,19 +351,40 @@ body{
 
 }
 
-.role-page .rap .title-btn .title{
+.role-page .rap .title-btn .title {
     width: 85%;
     text-align: center;
 }
 
+.role-page .rap .table{
+    padding: 20px;
+}
+
+.role-page .rap .table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.role-page .rap .table th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.role-page .rap .table tr td a{
+    color: var(--white);
+    font-size: 18px;
+}
+
 /* create-role-page */
 
-.create-role-page{
+.create-role-page {
     height: 90vh;
     width: 100vw;
 }
 
-.create-role-page .rap{
+.create-role-page .rap {
     height: 100%;
     width: 100%;
     display: flex;
@@ -360,26 +393,26 @@ body{
     justify-content: center;
 }
 
-.create-role-page .rap .title{
+.create-role-page .rap .title {
     margin-bottom: 20px;
     font-size: 30px;
 }
 
-.create-role-page .rap .box{
+.create-role-page .rap .box {
     margin-bottom: 10px;
 }
 
-.create-role-page .rap .box label{
+.create-role-page .rap .box label {
     margin-right: 10px;
 }
 
-.create-role-page .rap form{
+.create-role-page .rap form {
     padding: 20px;
     background-color: var(--bg-color1);
     border-radius: 10px;
 }
 
-.create-role-page .rap form button{
+.create-role-page .rap form button {
     height: 30px;
     width: 90px;
     color: var(--btn-color);
@@ -389,14 +422,56 @@ body{
     cursor: pointer;
 }
 
-.create-role-page .rap form .name{
+.create-role-page .rap form .name {
     margin-bottom: 10px;
 }
 
-.create-role-page .rap form .name input{
+.create-role-page .rap form .name input {
     height: 35px;
     border: none;
     padding-left: 10px;
     outline: none;
     border-radius: 8px;
 }
+
+
+/* add-role-page */
+
+.add-role-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.add-role-page .rap{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    flex-direction: column;
+}
+
+.add-role-page .rap h1{
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.add-role-page .rap .user{
+    padding: 10px;
+    background-color: var(--bg-color1);
+    border-radius: 8px;
+    display: flex;
+    margin-bottom: 10px;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    margin-top: 10px;
+}
+
+.add-role-page .rap .user i{
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 19px;
+}
+
