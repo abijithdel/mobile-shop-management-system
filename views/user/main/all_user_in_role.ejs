@@ -1,0 +1,14 @@
+<title><%= Role.name %></title>
+<section class="all-user-role-page">
+    <div class="rap">
+        <div class="title">
+            <h1><%= Role.name %></h1>
+        </div>
+        <% for(let key in Roles) { %>
+        <div class="user">
+            <h4><%= Roles[key].email%></h4>
+            <span>Admin: <%= Roles[key].admin%></span>
+        </div>
+        <% } %>
+    </div>
+</section>

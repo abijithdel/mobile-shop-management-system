@@ -19,7 +19,7 @@
         <% for(let key in rolse) { %>
         <tr>
           <td><%= rolse[key].name %></td>
-          <td><%= rolse[key].count %> <a href=""><i class="bi bi-info-circle-fill"></i></a></td>
+          <td><%= rolse[key].count %> <a href="/add-user/<%= rolse[key]._id %>"><i class="bi bi-info-circle-fill"></i></a></td>
           <td>
             <a title="give role a new user" href="/give-role/<%= store_id %>/<%= rolse[key]._id %>"><i class="bi bi-person-fill-add"></i></a> - 
             <!-- <a title="edit role" href=""><i class="bi bi-pencil-square"></i></a> -  -->

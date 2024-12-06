@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Home, CreateRole, RolePage, AddRole } = require("../utiitsl/main");
+const { Home, CreateRole, RolePage, AddRole, AllUserInTheRole } = require("../utiitsl/main");
 const { newStore, createNewStore } = require("../utiitsl/admin");
 
 function islogin(req, res, nest) {
@@ -45,14 +45,20 @@ router.post('/new-store', (req,res) => {
 
 router.get('/store/:store_id', islogin, (req,res) => {
   const { store_id } = req.params
-  res.render('user/main/store',{user:req.session.user, store_id})
+  res.render('user/main/store',{user:req.session.user, store_id, ErrorMessage:null})
 })
 
 router.get('/roles/:store_id' , islogin, (req,res) => {
   const { store_id } = req.params
-  RolePage(store_id)
+  const req_user = req.session.user
+  RolePage(store_id, req_user)
   .then(response => {
-    res.render('user/main/roles', {user:req.session.user, store_id, rolse:response.rolse, count:response.count})
+    if(response.manage_role){
+      res.render('user/main/roles', {user:req.session.user, store_id, rolse:response.rolse, count:response.count})
+    }else{
+      res.render('user/main/store',{user:req.session.user, store_id, ErrorMessage: 'sorry, you are not allowed to access this page '})
+    }
+    
   })
   .catch(err => console.log(err))
 })
@@ -81,6 +87,17 @@ router.get('/give-role/:store_id/:role_id', islogin, (req,res) => {
   AddRole(store_id)
   .then(response => {
     res.render('user/main/give-role',{user:req.session.user, users:response.user, store_id, role_id})
+  })
+  .catch(err => console.log(err))
+})
+
+router.get('/add-user/:role_id', islogin, (req,res) => {
+  const { role_id } = req.params
+  AllUserInTheRole(role_id)
+  .then(response => {
+    const Roles = response.UserArray
+    const Role = response.Role
+    res.render('user/main/all_user_in_role',{user:req.session.user, Roles, Role})
   })
   .catch(err => console.log(err))
 })

@@ -10,6 +10,11 @@
             <a href="">All Users</a>
         </div>
         <div class="main">
+            <% if(ErrorMessage) { %>
+                <div class="message">
+                    <p class="error-message"><%= ErrorMessage %></p>
+                </div>
+            <% } %>
             <h1 class="title">Store Name</h1>
         </div>
     </div>

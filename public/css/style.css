@@ -475,3 +475,30 @@ td {
     font-size: 19px;
 }
 
+/* all-user-role-page */
+
+.all-user-role-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.all-user-role-page .rap{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.all-user-role-page .rap .title{
+    margin-top: 10px;
+}
+
+.all-user-role-page .rap .user{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--bg-color1);
+    border-radius: 10px;
+    text-align: center;
+}
