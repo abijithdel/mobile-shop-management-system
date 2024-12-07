@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { enderStore, AddRole } = require("../utiitsl/api");
+const { enderStore, AddRole, DeleteRole } = require("../utiitsl/api");
 
 function islogin(req, res, nest) {
   if (req.session.login) {
@@ -26,6 +26,15 @@ router.get("/ender-store/:store_id", islogin, (req, res) => {
 
 router.post('/add-role', (req,res) => {
   AddRole(req.body)
+  .then(response => {
+    res.json(response)
+  })
+  .catch(err => console.log(err))
+})
+
+router.post('/delete-role', (req,res) => {
+  const { role_id } = req.body
+  DeleteRole(role_id)
   .then(response => {
     res.json(response)
   })

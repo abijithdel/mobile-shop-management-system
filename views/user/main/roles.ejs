@@ -23,7 +23,7 @@
           <td>
             <a title="give role a new user" href="/give-role/<%= store_id %>/<%= rolse[key]._id %>"><i class="bi bi-person-fill-add"></i></a> - 
             <!-- <a title="edit role" href=""><i class="bi bi-pencil-square"></i></a> -  -->
-            <a title="delete role" href=""><i class="bi bi-trash3"></i></a>
+            <a title="delete role" href="/delete-role/<%= rolse[key]._id %>/<%= store_id %>"><i class="bi bi-trash3"></i></a>
           </td>
         </tr>
         <% } %>

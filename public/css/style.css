@@ -502,3 +502,42 @@ td {
     border-radius: 10px;
     text-align: center;
 }
+
+/* delete-role-page */
+
+.delete-role-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.delete-role-page .rap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-role-page .rap .role-info{
+    text-align: center;
+}
+
+.delete-role-page .rap .role-info .title{
+    margin-bottom: 20px;
+}
+
+.delete-role-page .rap .role-info button{
+    height: 40px;
+    width: 100px;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    border-radius: 8px;
+    background-color: transparent;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.delete-role-page .rap .role-info button:hover{
+    color: var(--white);
+    background-color: var(--danger);
+}

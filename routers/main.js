@@ -102,4 +102,9 @@ router.get('/add-user/:role_id', islogin, (req,res) => {
   .catch(err => console.log(err))
 })
 
+router.get('/delete-role/:role_id/:store_id', islogin, (req,res) => {
+  const { role_id, store_id } = req.params
+  res.render('admin/delete-role',{user:req.session.user, role_id, store_id})
+})
+
 module.exports = router;

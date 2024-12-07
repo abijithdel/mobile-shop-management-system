@@ -137,28 +137,29 @@ async function AddRole(store_id) {
   });
 }
 
-function AllUserInTheRole(role_id) {
+async function AllUserInTheRole(role_id) {
   let UserArray = [];
-  return new Promise(async (resolve, reject) => {
-    try {
-      const Role = await RoleModel.findById(role_id);
-      const Users = await UserModel.find();
-      for (let key in Users) {
-        if (Users[key].role_info) {
-          for (let x in Users[key].role_info) {
-            if (Users[key].role_info[key].role_id) {
-              if (role_id == Users[key].role_info[key].role_id) {
-                UserArray.push(Users[key]);
-              }
-            }
-          }
-        }
-      }
-      resolve({ status: true, UserArray, Role });
-    } catch (error) {
-      reject({ status: false, error });
+  try {
+    const Role = await RoleModel.findById(role_id);
+    if (!Role) {
+      throw new Error("Role not found");
     }
-  });
+    const Users = await UserModel.find();
+
+    Users.forEach(user => {
+      if (user.role_info && Array.isArray(user.role_info)) {
+        user.role_info.forEach(role => {
+          if (role.role_id && role.role_id.toString() === role_id.toString()) {
+            UserArray.push(user);
+          }
+        });
+      }
+    });
+
+    return { status: true, UserArray, Role };
+  } catch (error) {
+    return { status: false, error: error.message || error };
+  }
 }
 
 module.exports = { Home, CreateRole, RolePage, AddRole, AllUserInTheRole };

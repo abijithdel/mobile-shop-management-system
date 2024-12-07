@@ -8,12 +8,16 @@ function ManageRole(store_id, user) {
                 if (store_id == user.role_info[key].store_id) {
                     try {
                         let role_id = user.role_info[key].role_id;
+
                         const Role = await RoleModel.findById(role_id);
-                        if (Role.manage_role) {
-                            permission = true;
+                        if (Role) {
+                            if (Role.manage_role) {
+                                permission = true;
+                            }
                         }
-                    } catch (error) { 
-                        reject({message:'Server Error'})
+                    } catch (error) {
+                        console.log(error);
+                        reject({ message: "Server Error" });
                     }
                 }
             }

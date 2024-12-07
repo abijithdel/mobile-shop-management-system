@@ -1,0 +1,42 @@
+<title>Delete Role</title>
+<section class="delete-role-page">
+    <div id="message">
+        <!-- Message Box -->
+    </div>
+    <div class="rap">
+        <div class="role-info">
+            <h1 class="title">Are You Sure</h1>
+            <h3>Admin!</h3>
+            <button id="delete-button" onclick="deleteRole('<%= role_id %>')">Delete</button>
+        </div>
+    </div>
+</section>
+<script>
+    const messageBox = document.getElementById('message')
+    const deleteBTN = document.getElementById('delete-button')
+    function deleteRole(role_id) {
+        deleteBTN.style.display = 'none'
+        fetch("/api/delete-role", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ role_id })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data) {
+                    const item = document.createElement('p')
+                    item.classList.add('success-message')
+                    item.innerHTML = data.message
+                    messageBox.appendChild(item)
+                }
+                setTimeout(() => {
+                    location.href = '/roles/<%= store_id %>'
+                }, 1000);
+            })
+            .catch(err => console.log(err))
+    }
+</script>
