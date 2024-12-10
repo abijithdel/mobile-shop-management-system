@@ -1,8 +1,10 @@
 const StoreModel = require("../config/Schema/store");
 const RoleModel = require("../config/Schema/role");
+const categoryModel = require("../config/Schema/category");
 const UserModel = require("../config/Schema/user");
+const ProductsModel = require("../config/Schema/products");
 const permission = require("../utiitsl/permission");
-const { response } = require("express");
+
 function Home() {
   let stores;
   return new Promise(async (resolve, reject) => {
@@ -162,4 +164,56 @@ async function AllUserInTheRole(role_id) {
   }
 }
 
-module.exports = { Home, CreateRole, RolePage, AddRole, AllUserInTheRole };
+function CreateCategory(name, store_id){
+  return new Promise( async (resolve, reject) => {
+    try {
+      const NewModel = new categoryModel({
+        name: name,
+        store_id: store_id
+      })
+      await NewModel.save()
+      resolve({ status:true, message: `Create New Category ${name}`})
+    } catch (error) {
+      console.log(error)
+      reject({ status:false, message: `Server Error ${error.message}`})
+    }
+  })
+}
+
+function GetMyCategories(store_id){
+  let MyCategories = []
+  return new Promise( async (resolve, reject) => {
+    try {
+      const categories = await categoryModel.find()
+      for(let key in categories){
+        if(categories[key].store_id == store_id){
+          MyCategories.push(categories[key])
+        }
+      }
+      resolve({status:true,MyCategories})
+    } catch (error) {
+      console.log(error)
+      reject({status:false,message:error.message})
+    }
+  })
+}
+
+function AddProducts(body,store_id){
+  return new Promise( async (resolve, reject) => {
+    try {
+      const date = new Date()
+      let NewData = { name:body.name, store_id:store_id, category:body.category, price:body.price, add_date:date}
+      if(body.filename){
+        NewData.img = body.filename
+      }
+      const NewProduct = new ProductsModel(NewData)
+      await NewProduct.save()
+      resolve({status:true})
+    } catch (error) {
+      console.log(error)
+      reject({status:false}) 
+    }
+  })
+}
+
+module.exports = { Home, CreateRole, RolePage, AddRole, AllUserInTheRole, CreateCategory, GetMyCategories, AddProducts };

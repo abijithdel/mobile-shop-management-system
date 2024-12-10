@@ -1,0 +1,26 @@
+<title>Create New Category</title>
+<section class="create-category-page">
+    <div class="rap">
+        <h1>Create New Category</h1>
+        <% if(message) { %>
+        <div class="message">
+            <p class="success-message"><%= message %></p>
+        </div>
+        <% } %>
+        <form action="/create-category/<%= store_id %>" method="post">
+            <label for="name">Category Name</label>
+            <br>
+            <input type="text" name="name" placeholder="Enter New Category Name" required>
+            <br>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</section>
+<script>
+    const status = '<%= message %>'
+    if(status){
+        setTimeout(() => {
+            location.href = '/add-products/<%= store_id %>'
+        }, 2000);
+    }
+</script>

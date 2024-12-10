@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { Home, CreateRole, RolePage, AddRole, AllUserInTheRole } = require("../utiitsl/main");
+const { Home, CreateRole, RolePage, AddRole, AllUserInTheRole, CreateCategory, GetMyCategories, AddProducts } = require("../utiitsl/main");
 const { newStore, createNewStore } = require("../utiitsl/admin");
+const { AddProduct } = require('../utiitsl/permission');
+const upload = require('../config/multer')
 
 function islogin(req, res, nest) {
   if (req.session.login) {
@@ -105,6 +107,56 @@ router.get('/add-user/:role_id', islogin, (req,res) => {
 router.get('/delete-role/:role_id/:store_id', islogin, (req,res) => {
   const { role_id, store_id } = req.params
   res.render('admin/delete-role',{user:req.session.user, role_id, store_id})
+})
+
+router.get('/add-products/:store_id', islogin, (req,res) => {
+  const user = req.session.user
+  const { store_id } = req.params
+  AddProduct(user, store_id)
+  .then(response => {
+    if(response.permission){
+      GetMyCategories(store_id)
+      .then(data => {
+        console.log()
+        res.render('user/main/add-products',{user:req.session.user, store_id, categories:data.MyCategories, message:null})
+      })
+      .catch(err => console.log(err))
+    }else{
+      res.render('user/main/store',{user:req.session.user, store_id, ErrorMessage: 'sorry, you are not allowed to access this page '})
+    }
+  })
+  .catch(err => console.log(err))
+})
+
+router.get('/create-category/:store_id', islogin, (req,res) => {
+  const { store_id } = req.params
+  res.render('user/main/category-create',{user:req.session.user, store_id, message:null})
+})
+
+router.post('/create-category/:store_id', (req,res) => {
+  const { store_id } = req.params
+  const { name } = req.body
+  CreateCategory(name , store_id)
+  .then(response => {
+    res.render('user/main/category-create',{user:req.session.user, store_id, message:response.message})
+  })
+  .catch(err => {
+    console.log(err)
+  })
+})
+
+router.post('/add-products/:store_id', upload.single('img'), (req,res) => {
+  const { name,category,price } = req.body;
+  const { store_id } = req.params
+  let filename = null
+  if(req.file){
+    filename = req.file.filename
+  }
+  AddProducts({name,category,price,filename},store_id)
+  .then(response => {
+    res.render('user/main/add-products',{user:req.session.user, store_id, categories:[], message: 'Product Added Successfully'})
+  })
+  .catch(err => console.log(err) + ' ' + __dirname)
 })
 
 module.exports = router;

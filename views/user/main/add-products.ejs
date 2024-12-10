@@ -1,0 +1,40 @@
+<title>Add New Products</title>
+<section class="add-products-page">
+    <div class="rap">
+        <div class="button">
+            <a href="/create-category/<%= store_id %>">Create Category</a>
+        </div>
+        <div class="products-container">
+            <h1>Create New Product</h1>
+            <div class="message">
+                <% if(message) { %>
+                    <p class="success-message"><%= message %></p>
+                <% } %>
+            </div>
+            <form action="/add-products/<%= store_id %>" method="post" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Product Name" required>
+                <select name="category" required>
+                    <% for(let key in categories) { %>
+                    <option value="<%= categories[key].name %>"><%= categories[key].name %></option>
+                    <% } %>
+                </select>
+                <input type="number" name="price" placeholder="Enter Product Price" required>
+                <div>
+                    <input type="file" name="img" style="width: 220px;">
+                    <label for="img">img</label>
+                </div>
+                <div>
+                    <button>Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+    const message = '<%= message %>'
+    if(message){
+        setTimeout(() => {
+            location.href = '/store/<%= store_id %>'
+        }, 2000);
+    }
+</script>

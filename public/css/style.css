@@ -541,3 +541,125 @@ td {
     color: var(--white);
     background-color: var(--danger);
 }
+
+/* add-products-page */
+
+.add-products-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.add-products-page .rap{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-products-page .rap .button{
+    width: 100%;
+    padding-top: 20px;
+}
+
+.add-products-page .rap .button a{
+    margin-left: 30px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    border: 1px solid var(--btn-color);
+    color: var(--btn-color);
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.add-products-page .rap .products-container{
+    height: 90%;
+    width: 100%;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.add-products-page .rap .products-container h1{
+    margin-bottom: 20px;
+}
+
+.add-products-page .rap .products-container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-products-page .rap .products-container form input{
+    width: 250px;
+    margin-top: 10px;
+    height: 40px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+
+.add-products-page .rap .products-container form select{
+    width: 250px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.add-products-page .rap .products-container form button{
+    height: 38px;
+    width: 100px;
+    border-radius: 8px;
+    border: 1px solid var(--btn-color);
+    background-color: transparent;
+    color: var(--btn-color);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* create-category-page */
+
+.create-category-page{
+    height: 90vh;
+    width: 100vw;
+}
+
+.create-category-page .rap{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-category-page .rap h1{
+    margin-top: 40px;
+}
+
+.create-category-page .rap form{
+    margin-top: 20px;
+}
+
+.create-category-page .rap form input{
+    height: 40px;
+    width: 250px;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.create-category-page .rap form button{
+    height: 36px;
+    width: 100px;
+    background-color: transparent;
+    color: var(--btn-color);
+    border-radius: 8px;
+    border: 1px solid var(--btn-color);
+    cursor: pointer;
+}
